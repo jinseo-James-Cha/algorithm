@@ -1,23 +1,25 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+package count.prime.numbers;
 
-public class LeetCode204Problem {
+import java.util.Arrays;
+
+public class Solution {
 
 	public static void main(String[] args) {
 		
-//		System.out.println(countPrimes(4)); // 2 // 2, 3
-////		System.out.println(countPrimes(5)); // 2 // 2, 3
-//////
-//		System.out.println(countPrimes(10)); // 4 // 2, 3, 5, 7
-////		System.out.println(countPrimes(21)); // 8 // 2, 3, 5, 7, 11, 13, 17, 19
-////
-//		System.out.println(countPrimes(0)); // 0
-//		System.out.println(countPrimes(1)); // 0
-////
-//		System.out.println(countPrimes(2)); // 0
-//		System.out.println(countPrimes(3)); // 1
+		//test
+		System.out.println(countPrimes(4)); // 2 // 2, 3
+		System.out.println(countPrimes(5)); // 2 // 2, 3
+
+		System.out.println(countPrimes(10)); // 4 // 2, 3, 5, 7
+		System.out.println(countPrimes(21)); // 8 // 2, 3, 5, 7, 11, 13, 17, 19
+
+		System.out.println(countPrimes(0)); // 0
+		System.out.println(countPrimes(1)); // 0
+
+		System.out.println(countPrimes(2)); // 0
+		System.out.println(countPrimes(3)); // 1
+		
+		
 		long start = System.currentTimeMillis();
 		System.out.println(countPrimes(499979)); // 41537
 		long end = System.currentTimeMillis();
@@ -25,6 +27,32 @@ public class LeetCode204Problem {
 
 
 	}
+	
+	/*
+	 * 에라토스테네스의 체를 구하는 방식은
+	 * 2부터 ~ N까지  증가하는 i 를 제외한 
+	 * i 의 배수를 하나하나 지워가면서 N까지 도달했을때 남은 수가 소수라고 하는 것이다. 
+	 */
+	public static int countPrimes(int n) {
+  
+		boolean[] prime = new boolean[n + 1];
+        Arrays.fill(prime, 0, n, true);
+        
+        for (int p = 2; p * p <= n; p++) {
+            if (prime[p])
+                for (int i = p * p; i <= n; i += p)
+                    prime[i] = false;
+        }
+        
+        int ct = 0;
+        
+        for (int i = 2; i <= n; i++)
+            if (prime[i])
+                ct++;
+        
+        return ct;
+	}
+	
 	//Ver.1 - time limit exceeded
 //	public static int countPrimes(int n) {
 //        
@@ -80,28 +108,5 @@ public class LeetCode204Problem {
 //		if(n == 3) return 1;
 //		return primeNums.size() == 1 ? 0 : count+1;
 //    }
-	/*
-	 * 에라토스테네스의 체를 구하는 방식은
-	 * 2부터 ~ N까지  증가하는 i 를 제외한 
-	 * i 의 배수를 하나하나 지워가면서 N까지 도달했을때 남은 수가 소수라고 하는 것이다. 
-	 */
-	public static int countPrimes(int n) {
-  
-		boolean[] prime = new boolean[n + 1];
-        Arrays.fill(prime, 0, n, true);
-        
-        for (int p = 2; p * p <= n; p++) {
-            if (prime[p])
-                for (int i = p * p; i <= n; i += p)
-                    prime[i] = false;
-        }
-        
-        int ct = 0;
-        
-        for (int i = 2; i <= n; i++)
-            if (prime[i])
-                ct++;
-        
-        return ct;
-	}
+	
 }
