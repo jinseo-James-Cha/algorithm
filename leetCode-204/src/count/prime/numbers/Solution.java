@@ -33,15 +33,21 @@ public class Solution {
 		 * 2부터 ~ N까지  증가하는 i 를 제외한 
 		 * i 의 배수를 하나하나 지워가면서 N까지 도달했을때 남은 수가 소수라고 하는 것이다. 
 		 */
+	
+		//solution 1
 		public static int countPrimes(int n) {
 	  
 			boolean[] prime = new boolean[n + 1];
+			// all fill with true before array
 	        Arrays.fill(prime, 0, n, true);
 	        
 	        for (int p = 2; p * p <= n; p++) {
-	            if (prime[p])
-	                for (int i = p * p; i <= n; i += p)
+	            if (prime[p]) {
+	                for (int i = p * p; i <= n; i += p) {
+	                	// insert false into all multiples of p
 	                    prime[i] = false;
+	                }
+	            }
 	        }
 	        
 	        int ct = 0;
@@ -52,6 +58,8 @@ public class Solution {
 	        
 	        return ct;
 		}
+		
+		
 		
 		//Ver.1 - time limit exceeded
 //		public static int countPrimes(int n) {
