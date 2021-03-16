@@ -16,8 +16,8 @@ public class Solution {
 //		String[] list4 = new String[] {"KFC","Shogun","Burger King"};
 //		// output : Shogun / sum index : 0+1
 //		
-//		String[] list5 = new String[] {"Shogun","Tapioca Express","Burger King","KFC"};
-//		String[] list6 = new String[] {"KFC","Burger King","Tapioca Express","Shogun", "hollys" , "starbucks"};
+		String[] list5 = new String[] {"Shogun","Tapioca Express","Burger King","KFC"};
+		String[] list6 = new String[] {"KFC","Burger King","Tapioca Express","Shogun", "hollys" , "starbucks"};
 //		// output : "KFC","Burger King","Tapioca Express","Shogun" 
 //		// sum index : 3+0, 2+1, 1+2, 0+3
 //		// arraylist index priority by first list index if sum is equal
@@ -34,8 +34,8 @@ public class Solution {
 		
 		String[] list11 = new String[] {"Shogun","Tapioca Express","Burger King","KFC"};
 		String[] list12 = new String[] {"KFC","Shogun","Burger King"};
-		//output : shogun
-
+//		//output : shogun
+//
 		String[] list13 = new String[] {"k", "KFC"};
 		String[] list14 = new String[] {"k", "KFC"};
 		//output : k
@@ -55,57 +55,83 @@ public class Solution {
 	 * 2. if the sum is different, only print the minimum number of sum
 	 * */
 	
-	
-	// Ver.1 
-	// Runtime 96ms
-	// 39.5 MB
-	// need a code re-factoring
+	// Ver2
+	// 
 	public String[] findRestaurant(String[] list1, String[] list2) {
-	        
-		//String[] result = new String[list1.length];
-		ArrayList<String> strArray = new ArrayList<>(list1.length);
-		
-		int sumOfIndex = 0;
-		boolean isEmpty = true;
+        
+		int sumOfIndex = list1.length + list2.length;
+		int count = 0;
 		
 		for(int i = 0; i < list2.length; i++) {
-			
 			for(int j = 0; j < list1.length; j++ ) {
 				
 				if(list2[i].equals(list1[j])){
 					
-					if( isEmpty) {
-						strArray.add(list2[i]);
-						isEmpty = false;
+					if(sumOfIndex > i+j) {
+						
+						count = 1;
 						sumOfIndex = i+j;
-					}
-					else if(sumOfIndex == i+j) {
-						strArray.add(list2[i]);
-					}
-					else if(sumOfIndex > i+j) {
-						strArray.removeAll(strArray);
-						strArray.add(list2[i]);
+						
+					} else if(sumOfIndex == i+j) {
+						
+						count++;
+						
+					} else if(sumOfIndex < i + j) {
+						
+						break;
+						
 					}
 				}
 			}
 		}
 		
-		return strArray.toArray(new String[strArray.size()]);
+		System.out.println(sumOfIndex);
+		System.out.println(count);
+
+		return list2;
 	}
 	
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	// Ver.1 
+	// Runtime 96ms
+	// 39.5 MB
+	// need a code re-factoring
+//	public String[] findRestaurant(String[] list1, String[] list2) {
+//	        
+//		//String[] result = new String[list1.length];
+//		ArrayList<String> strArray = new ArrayList<>(list1.length);
+//		
+//		int sumOfIndex = 0;
+//		boolean isEmpty = true;
+//		
+//		for(int i = 0; i < list2.length; i++) {
+//			
+//			for(int j = 0; j < list1.length; j++ ) {
+//				
+//				if(list2[i].equals(list1[j])){
+//					
+//					if( isEmpty) {
+//						strArray.add(list2[i]);
+//						isEmpty = false;
+//						sumOfIndex = i+j;
+//					}
+//					else if(sumOfIndex == i+j) {
+//						strArray.add(list2[i]);
+//					}
+//					else if(sumOfIndex > i+j) {
+//						strArray.clear();
+//						strArray.add(list2[i]);
+//					}
+//				}
+//			}
+//		}
+//		
+//		return strArray.toArray(new String[strArray.size()]);
+//	}
+//	
+//	
 	
 	
 }
