@@ -8,12 +8,12 @@ public class Solution {
 
 		Solution s = new Solution();
 		
-//		String[] list1 = {"Shogun","Tapioca Express","Burger King","KFC"};
-//		String[] list2 = {"Piatti","The Grill at Torrey Pines","Hungry Hunter Steakhouse","Shogun"};
+		String[] list1 = {"Shogun","Tapioca Express","Burger King","KFC"};
+		String[] list2 = {"Piatti","The Grill at Torrey Pines","Hungry Hunter Steakhouse","Shogun"};
 //		// output : Shogun
 //		
-//		String[] list3 = new String[] {"Shogun","Tapioca Express","Burger King","KFC"};
-//		String[] list4 = new String[] {"KFC","Shogun","Burger King"};
+		String[] list3 = new String[] {"Shogun","Tapioca Express","Burger King","KFC"};
+		String[] list4 = new String[] {"KFC","Shogun","Burger King"};
 //		// output : Shogun / sum index : 0+1
 //		
 		String[] list5 = new String[] {"Shogun","Tapioca Express","Burger King","KFC"};
@@ -22,14 +22,14 @@ public class Solution {
 //		// sum index : 3+0, 2+1, 1+2, 0+3
 //		// arraylist index priority by first list index if sum is equal
 //		
-//		String[] list7 = new String[] {"Shogun","Tapioca Express","Burger King","KFC"};
-//		String[] list8 = new String[] {"KNN","KFC","Burger King","Tapioca Express","Shogun"};
+		String[] list7 = new String[] {"Shogun","Tapioca Express","Burger King","KFC"};
+		String[] list8 = new String[] {"KNN","KFC","Burger King","Tapioca Express","Shogun"};
 //		// output : "KFC","Burger King","Tapioca Express","Shogun"
 //		// sum index : 3+1, 2+2, 1+3, 0+4
 //		// less sum index, early in the output 
 //		
-//		String[] list9 = new String[] {"KFC"};
-//		String[] list10 = new String[] {"KFC"};
+		String[] list9 = new String[] {"KFC"};
+		String[] list10 = new String[] {"KFC"};
 		// output : "KFC"
 		
 		String[] list11 = new String[] {"Shogun","Tapioca Express","Burger King","KFC"};
@@ -41,7 +41,7 @@ public class Solution {
 		//output : k
 		
 		//case 1
-		for(String str : s.findRestaurant(list13, list14)) {
+		for(String str : s.findRestaurant(list11, list12)) {
 			System.out.println(str);
 		}
 	}
@@ -56,9 +56,12 @@ public class Solution {
 	 * */
 	
 	// Ver2
-	// 
+	// Runtime 87ms
+	// Memory 39.9MB
 	public String[] findRestaurant(String[] list1, String[] list2) {
         
+		ArrayList<String> result = new ArrayList<>();
+		
 		int sumOfIndex = list1.length + list2.length;
 		int count = 0;
 		
@@ -69,12 +72,15 @@ public class Solution {
 					
 					if(sumOfIndex > i+j) {
 						
-						count = 1;
+						result.clear();
+						result.add(list2[i]);
+//						count = 1;
 						sumOfIndex = i+j;
 						
 					} else if(sumOfIndex == i+j) {
 						
-						count++;
+//						count++;
+						result.add(list2[i]);
 						
 					} else if(sumOfIndex < i + j) {
 						
@@ -84,11 +90,12 @@ public class Solution {
 				}
 			}
 		}
+		System.out.println(result);
 		
-		System.out.println(sumOfIndex);
-		System.out.println(count);
+//		System.out.println(sumOfIndex);
+//		System.out.println(count);
 
-		return list2;
+		return result.toArray(new String[result.size()]);
 	}
 	
 	
@@ -96,7 +103,7 @@ public class Solution {
 	
 	// Ver.1 
 	// Runtime 96ms
-	// 39.5 MB
+	// Memory 39.5MB
 	// need a code re-factoring
 //	public String[] findRestaurant(String[] list1, String[] list2) {
 //	        
