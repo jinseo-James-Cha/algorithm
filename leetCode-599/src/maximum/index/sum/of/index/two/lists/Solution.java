@@ -1,6 +1,8 @@
 package maximum.index.sum.of.index.two.lists;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Solution {
 
@@ -41,7 +43,7 @@ public class Solution {
 		//output : k
 		
 		//case 1
-		for(String str : s.findRestaurant(list11, list12)) {
+		for(String str : s.findRestaurant(list5, list6)) {
 			System.out.println(str);
 		}
 	}
@@ -55,48 +57,97 @@ public class Solution {
 	 * 2. if the sum is different, only print the minimum number of sum
 	 * */
 	
-	// Ver2
-	// Runtime 87ms
-	// Memory 39.9MB
+	// Ver 3
+	// Runtime 7ms
+	// Memory 39.8 MB
+	// HashMap has key(String) and value(Integer)
+	// it has advantage of searching key by using containsKey(key)
 	public String[] findRestaurant(String[] list1, String[] list2) {
         
-		ArrayList<String> result = new ArrayList<>();
+		// Using HashMap
+		Map<String, Integer> list1Map = new HashMap<>();
+		ArrayList<String> resultArray = new ArrayList<>();
 		
-		int sumOfIndex = list1.length + list2.length;
-		int count = 0;
+		for(int i = 0; i < list1.length; i++) {
+			list1Map.put(list1[i], i);
+		}
+		
+		int minSum = list1.length + list2.length;
 		
 		for(int i = 0; i < list2.length; i++) {
-			for(int j = 0; j < list1.length; j++ ) {
+			
+			if(list1Map.containsKey(list2[i])) {
 				
-				if(list2[i].equals(list1[j])){
+				int temp = list1Map.get(list2[i]) + i;
+				
+				if( minSum > temp) {
+					// minimum sum changed
+					minSum = temp;
+
+					// clear saved values previously
+					resultArray.clear();
 					
-					if(sumOfIndex > i+j) {
-						
-						result.clear();
-						result.add(list2[i]);
-//						count = 1;
-						sumOfIndex = i+j;
-						
-					} else if(sumOfIndex == i+j) {
-						
-//						count++;
-						result.add(list2[i]);
-						
-					} else if(sumOfIndex < i + j) {
-						
-						break;
-						
-					}
+					resultArray.add(list2[i]);
+					
+				} else if( minSum == temp ) {
+					
+					resultArray.add(list2[i]);
 				}
 			}
 		}
-		System.out.println(result);
 		
-//		System.out.println(sumOfIndex);
-//		System.out.println(count);
-
-		return result.toArray(new String[result.size()]);
+		// transfer ArrayList's saved values to String[]
+		String[] result = new String[resultArray.size()];
+		for(int i = 0; i < result.length; i++) {
+			result[i] = resultArray.get(i);
+		}
+		
+		return result;
 	}
+	
+	
+	// Ver2
+	// Runtime 87ms
+	// Memory 39.9MB
+//	public String[] findRestaurant(String[] list1, String[] list2) {
+//        
+//		ArrayList<String> result = new ArrayList<>();
+//		
+//		int sumOfIndex = list1.length + list2.length;
+//		int count = 0;
+//		
+//		for(int i = 0; i < list2.length; i++) {
+//			for(int j = 0; j < list1.length; j++ ) {
+//				
+//				if(list2[i].equals(list1[j])){
+//					
+//					if(sumOfIndex > i+j) {
+//						
+//						result.clear();
+//						result.add(list2[i]);
+////						count = 1;
+//						sumOfIndex = i+j;
+//						
+//					} else if(sumOfIndex == i+j) {
+//						
+////						count++;
+//						result.add(list2[i]);
+//						
+//					} else if(sumOfIndex < i + j) {
+//						
+//						break;
+//						
+//					}
+//				}
+//			}
+//		}
+//		System.out.println(result);
+//		
+////		System.out.println(sumOfIndex);
+////		System.out.println(count);
+//
+//		return result.toArray(new String[result.size()]);
+//	}
 	
 	
 	
