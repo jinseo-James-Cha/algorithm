@@ -36,6 +36,9 @@ public class Solution {
 	// Memory  : 38.9 MB, 95.97%
 	// result  : Arrays class sort method by Anonymous Class
 	// comment : need to study more in various types' methods, it reduces Runtime much better.
+	// learned : Arrays.sort(boxTypes, (a,b) -> b[1] - a[1]);
+	//                        list ,  a,b are the type of list -> return statement 
+	//                       int[][], a&b int[] -> return statement
 	
 	public int maximumUnits(int[][] boxTypes, int truckSize) {
         
