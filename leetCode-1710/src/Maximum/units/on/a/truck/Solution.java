@@ -1,10 +1,7 @@
 package Maximum.units.on.a.truck;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
+import java.util.Arrays;
+import java.util.Comparator;
 
 public class Solution {
 
@@ -30,54 +27,108 @@ public class Solution {
 		int[][] e3 = {{2,1},{4,4},{3,1},{4,1},{2,4},{3,4},{1,3},{4,3},{5,3},{5,3}};
 		int e33 = 13;
 		
-		System.out.println(s.maximumUnits(e3, e33));
+		System.out.println(s.maximumUnits(e2, e22));
 		
 	}
+	
+	// Ver.4
+	// Runtime : 7 ms, 94.87%   
+	// Memory  : 39.1 MB, 77.24%
+	// result1 : 
+	
+	public int maximumUnits(int[][] boxTypes, int truckSize) {
+		
+		// Arrays class contains various methods for manipulating arrays (such as sorting and searching).
+		// Arrays class also contains a static factory that allows arrays to be viewed as lists.
+
+		// [][]boxTypes -> a[] and b[]
+		// b[1] - a[1] -> descending order by int[]'s index 1
+		
+        Arrays.sort(boxTypes, (a,b) -> b[1] - a[1]);
+        
+//        Arrays.sort(boxTypes, new Comparator<int[]>() {
+//
+//			@Override
+//			public int compare(int[] o1, int[] o2) {
+//				// TODO Auto-generated method stub
+//				return o2[1] - o1[1];
+//			}
+//        });
+        
+		
+		int result = 0;
+		for(int i = 0; i < boxTypes.length; i++) {
+
+			int numOfBox = boxTypes[i][0];
+			int numOfUnit = boxTypes[i][1];
+			
+			if(truckSize >= numOfBox) {
+				result += (numOfBox * numOfUnit);
+				truckSize -= numOfBox;
+				
+			} else {
+				result += (numOfUnit * truckSize);
+				break;
+			}
+			
+			/* the same with above if,else statements */
+			
+			
+//			result += (truckSize >= numOfBox ? (numOfBox * numOfUnit) : (numOfUnit * truckSize));
+//			truckSize = (truckSize <= numOfBox ? 0 : truckSize - numOfBox );
+//			if(truckSize == 0)
+//				break;
+		}
+		
+		
+		return result;
+	}
+	
+	
+	
+	
+	
 	// Ver.3
 	// Runtime : 25 ms, 14.88%   
 	// Memory  : 39 MB, 91.25%
 	// result1 : better in Memory usage, worse in Runtime
 	
-	public int maximumUnits(int[][] boxTypes, int truckSize) {
-	
-		TreeMap<Integer, Integer> t = new TreeMap<>(Collections.reverseOrder());
-		int result = 0;
-		
-		for(int i = 0; i < boxTypes.length; i++) {
-			
-			if(t.containsKey(boxTypes[i][1])) {
-				
-				t.put(boxTypes[i][1], t.get(boxTypes[i][1]) + boxTypes[i][0]);
-			
-			}
-			else {
-				
-				t.put(boxTypes[i][1], boxTypes[i][0]);
-				
-			}
-			
-		}
-	//	System.out.println(t);
-	//	System.out.println(t.keySet());
-	//	System.out.println(t.values());
-		
-		System.out.println(t);
-		Object[] keys = t.keySet().toArray();
-		Object[] values = t.values().toArray();
-		
-		for(int i = 0; i < keys.length; i++) {
-			for(int j = (int)values[i]; j > 0; j--) {
-				result += (int)keys[i];
-					
-				if(--truckSize == 0) {
-					return result;
-				}		
-			}
-		}
-		
-	
-		return result;
-}
+//	public int maximumUnits(int[][] boxTypes, int truckSize) {
+//	
+//		TreeMap<Integer, Integer> t = new TreeMap<>(Collections.reverseOrder());
+//		int result = 0;
+//		
+//		for(int i = 0; i < boxTypes.length; i++) {
+//			
+//			if(t.containsKey(boxTypes[i][1])) {
+//				
+//				t.put(boxTypes[i][1], t.get(boxTypes[i][1]) + boxTypes[i][0]);
+//			
+//			}
+//			else {
+//				
+//				t.put(boxTypes[i][1], boxTypes[i][0]);
+//				
+//			}
+//			
+//		}
+//		
+//		Object[] keys = t.keySet().toArray();
+//		Object[] values = t.values().toArray();
+//		
+//		for(int i = 0; i < keys.length; i++) {
+//			for(int j = (int)values[i]; j > 0; j--) {
+//				result += (int)keys[i];
+//					
+//				if(--truckSize == 0) {
+//					return result;
+//				}		
+//			}
+//		}
+//		
+//	
+//		return result;
+//	}
 	
 	
 	
