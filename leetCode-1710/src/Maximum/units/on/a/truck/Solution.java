@@ -49,6 +49,7 @@ public class Solution {
         });
 		
 		int result = 0;
+		
 		for(int i = 0; i < boxTypes.length; i++) {
 
 			if(truckSize >= boxTypes[i][0]) {
@@ -85,14 +86,14 @@ public class Solution {
 //		
 //        Arrays.sort(boxTypes, (a,b) -> b[1] - a[1]);
 //        
-////        Arrays.sort(boxTypes, new Comparator<int[]>() {
-////
-////			@Override
-////			public int compare(int[] o1, int[] o2) {
-////				// TODO Auto-generated method stub
-////				return o2[1] - o1[1];
-////			}
-////        });
+//        Arrays.sort(boxTypes, new Comparator<int[]>() {
+//
+//			@Override
+//			public int compare(int[] o1, int[] o2) {
+//				// TODO Auto-generated method stub
+//				return o2[1] - o1[1];
+//			}
+//        });
 //        
 //		
 //		int result = 0;
@@ -180,9 +181,9 @@ public class Solution {
 	//	public int maximumUnits(int[][] boxTypes, int truckSize) {
 //		
 ////		HashMap : not supported Descending order by using reverseOrder() method
-////		HashMap<Integer, Integer> h = new HashMap<>();
+//		HashMap<Integer, Integer> h = new HashMap<>();
 //		
-////		TreeMap : supported Descending, ordered by key value;
+//		TreeMap : supported Descending, ordered by key value;
 //		TreeMap<Integer, Integer> t = new TreeMap<>(Collections.reverseOrder());
 //		int result = 0;
 //		
