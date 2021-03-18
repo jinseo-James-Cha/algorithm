@@ -31,58 +31,97 @@ public class Solution {
 		
 	}
 	
-	// Ver.4
+	// Ver.5
 	// Runtime : 7 ms, 94.87%   
-	// Memory  : 39.1 MB, 77.24%
-	// result1 : 
+	// Memory  : 38.9 MB, 95.97%
+	// result  : Arrays class sort method by Anonymous Class
+	// comment : need to study more in various types' methods, it reduces Runtime much better.
 	
 	public int maximumUnits(int[][] boxTypes, int truckSize) {
-		
-		// Arrays class contains various methods for manipulating arrays (such as sorting and searching).
-		// Arrays class also contains a static factory that allows arrays to be viewed as lists.
+        
+		Arrays.sort(boxTypes, new Comparator<int[]>() {
 
-		// [][]boxTypes -> a[] and b[]
-		// b[1] - a[1] -> descending order by int[]'s index 1
-		
-        Arrays.sort(boxTypes, (a,b) -> b[1] - a[1]);
-        
-//        Arrays.sort(boxTypes, new Comparator<int[]>() {
-//
-//			@Override
-//			public int compare(int[] o1, int[] o2) {
-//				// TODO Auto-generated method stub
-//				return o2[1] - o1[1];
-//			}
-//        });
-        
+			@Override
+			public int compare(int[] o1, int[] o2) {
+				// TODO Auto-generated method stub
+				return o2[1] - o1[1];
+			}
+        });
 		
 		int result = 0;
 		for(int i = 0; i < boxTypes.length; i++) {
 
-			int numOfBox = boxTypes[i][0];
-			int numOfUnit = boxTypes[i][1];
-			
-			if(truckSize >= numOfBox) {
-				result += (numOfBox * numOfUnit);
-				truckSize -= numOfBox;
+			if(truckSize >= boxTypes[i][0]) {
+				
+				result += (boxTypes[i][0] * boxTypes[i][1]);
+				truckSize -= boxTypes[i][0];
 				
 			} else {
-				result += (numOfUnit * truckSize);
+			
+				result += (boxTypes[i][1] * truckSize);
 				break;
+				
 			}
-			
-			/* the same with above if,else statements */
-			
-			
-//			result += (truckSize >= numOfBox ? (numOfBox * numOfUnit) : (numOfUnit * truckSize));
-//			truckSize = (truckSize <= numOfBox ? 0 : truckSize - numOfBox );
-//			if(truckSize == 0)
-//				break;
 		}
-		
-		
+	
 		return result;
 	}
+		
+	
+	
+	
+	// Ver.4
+	// Runtime : 7 ms, 94.87%   
+	// Memory  : 39.1 MB, 77.24%
+	// result  : Arrays class sort method by Lamda
+	
+//	public int maximumUnits(int[][] boxTypes, int truckSize) {
+//		
+//		// Arrays class contains various methods for manipulating arrays (such as sorting and searching).
+//		// Arrays class also contains a static factory that allows arrays to be viewed as lists.
+//
+//		// [][]boxTypes -> a[] and b[]
+//		// b[1] - a[1] -> descending order by int[]'s index 1
+//		
+//        Arrays.sort(boxTypes, (a,b) -> b[1] - a[1]);
+//        
+////        Arrays.sort(boxTypes, new Comparator<int[]>() {
+////
+////			@Override
+////			public int compare(int[] o1, int[] o2) {
+////				// TODO Auto-generated method stub
+////				return o2[1] - o1[1];
+////			}
+////        });
+//        
+//		
+//		int result = 0;
+//		for(int i = 0; i < boxTypes.length; i++) {
+//
+//			int numOfBox = boxTypes[i][0];
+//			int numOfUnit = boxTypes[i][1];
+//			
+//			if(truckSize >= numOfBox) {
+//				result += (numOfBox * numOfUnit);
+//				truckSize -= numOfBox;
+//				
+//			} else {
+//				result += (numOfUnit * truckSize);
+//				break;
+//			}
+//			
+//			/* the same with above if,else statements */
+//			
+//			
+////			result += (truckSize >= numOfBox ? (numOfBox * numOfUnit) : (numOfUnit * truckSize));
+////			truckSize = (truckSize <= numOfBox ? 0 : truckSize - numOfBox );
+////			if(truckSize == 0)
+////				break;
+//		}
+//		
+//		
+//		return result;
+//	}
 	
 	
 	
