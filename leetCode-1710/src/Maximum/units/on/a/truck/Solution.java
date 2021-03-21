@@ -30,8 +30,6 @@ public class Solution {
 		System.out.println(s.maximumUnits(e2, e22));
 		
 	}
-	// Ver.6
-	//
 	
 	
 	// Ver.5
