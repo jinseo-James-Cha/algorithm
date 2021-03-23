@@ -1,4 +1,4 @@
-package woter.bottles;
+package water.bottles;
 
 public class Solution {
 
