@@ -22,24 +22,39 @@ public class Solution {
 		
 		Solution s = new Solution();
 		
-		System.out.println(s.numWaterBottles(9, 3));
+//		System.out.println(s.numWaterBottles(9, 3));
 		//output : 13
 		
 		System.out.println(s.numWaterBottles(15, 4));
-		//output : 19
-		
-		System.out.println(s.numWaterBottles(5, 5));
-		//output : 6
-		
-		System.out.println(s.numWaterBottles(2, 3));
-		//output : 2
+//		//output : 19
+//		
+//		System.out.println(s.numWaterBottles(5, 5));
+//		//output : 6
+//		
+//		System.out.println(s.numWaterBottles(2, 3));
+//		//output : 2
 		
 	}
 	
 	public int numWaterBottles(int numBottles, int numExchange) {
         
+		int result = numBottles;
 		
-		return 0;
+		for(int i = numExchange; i > 0; i--) {
+//			System.out.println(result);
+			
+			
+			if( numBottles >= 3 ) {
+				numBottles /= 3;
+				result += numBottles;
+				System.out.println(numBottles);
+			} else {
+				break;
+			}
+		}
+		
+		
+		return result;
     }
 
 }
