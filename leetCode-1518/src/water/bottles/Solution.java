@@ -40,17 +40,9 @@ public class Solution {
         
 		int result = numBottles;
 		
-		for(int i = numExchange; i > 0; i--) {
-//			System.out.println(result);
+		while(numBottles >= numExchange) {
 			
 			
-			if( numBottles >= 3 ) {
-				numBottles /= 3;
-				result += numBottles;
-				System.out.println(numBottles);
-			} else {
-				break;
-			}
 		}
 		
 		
