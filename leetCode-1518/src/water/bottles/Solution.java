@@ -36,6 +36,9 @@ public class Solution {
 		
 	}
 	
+	
+	
+	
 	// Ver.1
 	// Runtime : 1 ms, 100%   
 	// Memory  : 35.9 MB, 36.61%
@@ -44,6 +47,7 @@ public class Solution {
 	public int numWaterBottles(int numBottles, int numExchange) {
         
 		int result = numBottles;
+		
 		while(numBottles >= numExchange) {
 						
 			result += numBottles/numExchange ;
