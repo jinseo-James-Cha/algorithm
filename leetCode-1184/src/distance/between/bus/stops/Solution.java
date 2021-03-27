@@ -22,13 +22,26 @@ public class Solution {
 		Solution s = new Solution();
 		System.out.println(s.distanceBetweenBusStops(new int[]{1, 2, 3, 4}, 0, 1));
 		
-		
+		/*
+		 * Input: distance = [1,2,3,4], start = 0, destination = 2
+		 * Output: 3
+		 * Explanation: Distance between 0 and 2 is 3 or 7, minimum is 3.
+		 */
+//		System.out.println(s.distanceBetweenBusStops(new int[]{1, 2, 3, 4}, 2, 3));
+
 	}
 	
 	 public int distanceBetweenBusStops(int[] distance, int start, int destination) {
 	 
-		
-		 int result = distance[start] + distance[destination];
+		 int result = 0;
+		 
+		 
+		 //ClockWise
+		 for( int i = start; i < destination ; i++) {
+			 
+			 result += distance[i];
+		 }
+			 
 		 
 		 
 		 return result;
