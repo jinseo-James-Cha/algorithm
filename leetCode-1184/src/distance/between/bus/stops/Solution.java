@@ -27,8 +27,11 @@ public class Solution {
 	
 	 public int distanceBetweenBusStops(int[] distance, int start, int destination) {
 	 
+		
+		 int result = distance[start] + distance[destination];
 		 
-		 return 0;
+		 
+		 return result;
 	 }
 
 }
