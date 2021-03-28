@@ -103,7 +103,7 @@ public class Solution {
 			clockWise += distance[i];
 		}
 			
-		return clockWise >= sum - clockWise ? sum - clockWise : clockWise;
+		return Math.min(clockWise, sum - clockWise);
     }
 	
 	
