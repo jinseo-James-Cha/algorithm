@@ -33,18 +33,26 @@ public class Solution {
 	
 	 public int distanceBetweenBusStops(int[] distance, int start, int destination) {
 	 
-		 int result = 0;
-		 
+		 int clockWise = 0;
+		 int CounterClockWise = 0;
+		 int minimum = 0;
 		 
 		 //ClockWise
-		 for( int i = start; i < destination ; i++) {
+//		 for( int i = start; i < destination ; i++) {
+//			 
+//			 clockWise += distance[i];
+//		 }
 			 
-			 result += distance[i];
-		 }
-			 
+//		 //CounterClockWise
+//		 for( int i = start;  ;  i++ ) {
+//			 
+//			 clockWisse++;
+//			 
+//			 
+//		 }
 		 
 		 
-		 return result;
+		 return minimum;
 	 }
 
 }
