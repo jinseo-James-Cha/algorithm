@@ -20,7 +20,7 @@ public class Solution {
 		 */
 		
 		Solution s = new Solution();
-		System.out.println(s.distanceBetweenBusStops(new int[]{1, 2, 3, 4}, 0, 1));
+//		System.out.println(s.distanceBetweenBusStops(new int[]{1, 2, 3, 4}, 0, 1));
 		
 		/*
 		 * Input: distance = [1,2,3,4], start = 0, destination = 2
@@ -29,30 +29,52 @@ public class Solution {
 		 */
 //		System.out.println(s.distanceBetweenBusStops(new int[]{1, 2, 3, 4}, 2, 3));
 
+		
+		
+		
+		/*
+		 * Input: distance = [7,10,1,12,11,14,5,0], start = 7, destination = 2
+		 * Output: 17
+		 * Explanation: Distance between 0 and 2 is 3 or 7, minimum is 3.
+		 */
+		
+		System.out.println(s.distanceBetweenBusStops(new int[]{7,10,1,12,11,14,5,0}, 7, 2));
+
+				
 	}
 	
+	
+	 // Ver.1
+	 // Runtime : 0 ms, faster than 100% of other's solutions   
+	 // Memory  : 39.1 MB, less than 21.24% of other's solutions 
+	 // Comment : need to improve on memory usage.
 	 public int distanceBetweenBusStops(int[] distance, int start, int destination) {
 	 
 		 int clockWise = 0;
-		 int CounterClockWise = 0;
-		 int minimum = 0;
+		 int counterClockWise = 0;
+		 int sum = 0;
 		 
-		 //ClockWise
-//		 for( int i = start; i < destination ; i++) {
-//			 
-//			 clockWise += distance[i];
-//		 }
+		 // sum of all distances
+		 for(int i = 0; i < distance.length; i++) {
+			 sum += distance[i];
+		 }
+		 
+		 // distance of ClockWise
+		 if( start < destination)
+			 for( int i = start; i < destination ; i++) {
+				 
+				 clockWise += distance[i];
+			 }
+		 else {
+			 for( int i = start - 1; i >= destination; i--) {
+				 clockWise += distance[i];
+			 }
 			 
-//		 //CounterClockWise
-//		 for( int i = start;  ;  i++ ) {
-//			 
-//			 clockWisse++;
-//			 
-//			 
-//		 }
+		 }
+		// distance of counter Clockwise 
+		counterClockWise = sum - clockWise;
 		 
-		 
-		 return minimum;
+		return clockWise >= counterClockWise ? counterClockWise : clockWise;
 	 }
 
 }
