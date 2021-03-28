@@ -20,14 +20,14 @@ public class Solution {
 		 */
 		
 		Solution s = new Solution();
-//		System.out.println(s.distanceBetweenBusStops(new int[]{1, 2, 3, 4}, 0, 1));
+		System.out.println(s.distanceBetweenBusStops(new int[]{1, 2, 3, 4}, 0, 3));
 		
 		/*
 		 * Input: distance = [1,2,3,4], start = 0, destination = 2
 		 * Output: 3
 		 * Explanation: Distance between 0 and 2 is 3 or 7, minimum is 3.
 		 */
-//		System.out.println(s.distanceBetweenBusStops(new int[]{1, 2, 3, 4}, 2, 3));
+		System.out.println(s.distanceBetweenBusStops(new int[]{1, 2, 3, 4}, 2, 3));
 
 		
 		
@@ -43,38 +43,102 @@ public class Solution {
 				
 	}
 	
+	// Ver.3
+	// Runtime : 0 ms, faster than 100% of other's solutions   
+	// Memory  : 38.8 MB, less than 42.49% of other's solutions 
+	// Comment : worse version on memory usage.
+	//           for-loop is better than for-loop & if statement
+//	public int distanceBetweenBusStops(int[] distance, int start, int destination) {
+//		 
+//		int clockWise = 0;
+//		int sum = 0;
+//		
+//		if( start > destination) {
+//			int temp = 0;
+//			temp = destination;
+//			destination = start;
+//			start = temp;
+//		}
+//		
+//		// sum of CounterClockwise first
+//		for(int i = 0; i < distance.length; i++) {
+//			if(i < start || i > destination - 1)
+//				sum += distance[i];			
+//		}
+//		
+//		
+//		for( int i = start; i < destination ; i++) {
+//			clockWise += distance[i];
+//			if( sum <= clockWise)
+//				return sum;
+//		}
+//			
+//		return clockWise;
+//	}
+	
+	
+	// Ver.2
+	// Runtime : 0 ms, faster than 100% of other's solutions   
+	// Memory  : 38.8 MB, less than 54.94% of other's solutions 
+	// Comment : re-factoring to remove duplicate for loop.
+	//           need to find a way to reduce memory usage, where is calculating sum.
+	public int distanceBetweenBusStops(int[] distance, int start, int destination) {
+        int clockWise = 0;
+		int sum = 0;
+		
+		if( start > destination) {
+			int temp = 0;
+			temp = destination;
+			destination = start;
+			start = temp;
+		}
+		
+		// sum of all distances
+		for(int i = 0; i < distance.length; i++) {
+			sum += distance[i];			
+		}
+		
+		
+		for( int i = start; i < destination ; i++) {
+			clockWise += distance[i];
+		}
+			
+		return clockWise >= sum - clockWise ? sum - clockWise : clockWise;
+    }
+	
+	
 	
 	 // Ver.1
 	 // Runtime : 0 ms, faster than 100% of other's solutions   
 	 // Memory  : 39.1 MB, less than 21.24% of other's solutions 
 	 // Comment : need to improve on memory usage.
-	 public int distanceBetweenBusStops(int[] distance, int start, int destination) {
-	 
-		 int clockWise = 0;
-		 int counterClockWise = 0;
-		 int sum = 0;
-		 
-		 // sum of all distances
-		 for(int i = 0; i < distance.length; i++) {
-			 sum += distance[i];
-		 }
-		 
-		 // distance of ClockWise
-		 if( start < destination)
-			 for( int i = start; i < destination ; i++) {
-				 
-				 clockWise += distance[i];
-			 }
-		 else {
-			 for( int i = start - 1; i >= destination; i--) {
-				 clockWise += distance[i];
-			 }
-			 
-		 }
-		// distance of counter Clockwise 
-		counterClockWise = sum - clockWise;
-		 
-		return clockWise >= counterClockWise ? counterClockWise : clockWise;
-	 }
+//	public int distanceBetweenBusStops(int[] distance, int start, int destination) {
+//	 
+//		int clockWise = 0;
+//		int counterClockWise = 0;
+//		int sum = 0;
+//		 
+//		// sum of all distances
+//		for(int i = 0; i < distance.length; i++) {
+//			sum += distance[i];
+//		}
+//		 
+//		// distance of ClockWise
+//		if( start < destination)
+//			for( int i = start; i < destination ; i++) {
+//				 
+//				clockWise += distance[i];
+//			}
+//		else {
+//			for( int i = start - 1; i >= destination; i--) {
+//				clockWise += distance[i];
+//			}
+//			 
+//		}
+//		// distance of counter Clockwise 
+//		counterClockWise = sum - clockWise;
+//		 
+//		return clockWise >= counterClockWise ? counterClockWise : clockWise;
+//	 }
 
 }
