@@ -10,6 +10,15 @@ public class Solution {
          * In one move, you can increment n - 1 elements of the array by 1.
          * 
 		 * */
+		
+		/*
+		 * n == nums.length
+		 * 1 <= nums.length <= 104
+         * -109 <= nums[i] <= 109
+		 * */
+		
+		
+		
 		Solution s = new Solution();
 		
 		
@@ -36,7 +45,8 @@ public class Solution {
 	
 	
 	public int minMoves(int[] nums) {
-        
+        int length = nums.length;
+		
 		return 0;
     }
 
