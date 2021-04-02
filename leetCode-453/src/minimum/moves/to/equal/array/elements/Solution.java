@@ -46,6 +46,11 @@ public class Solution {
 	
 	public int minMoves(int[] nums) {
         int length = nums.length;
+        if(length > 0) {
+        	return 0;
+        }
+        
+      
 		
 		return 0;
     }
