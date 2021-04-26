@@ -47,6 +47,8 @@ public class Solution {
 	public int minMoves(int[] nums) {
         int length = nums.length;
         if(length > 0) {
+        // how to find minimum number 
+        // how to increase others
         	return 0;
         }
         
