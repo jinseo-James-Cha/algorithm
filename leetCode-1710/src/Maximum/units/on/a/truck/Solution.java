@@ -43,6 +43,8 @@ public class Solution {
 	
 	public int maximumUnits(int[][] boxTypes, int truckSize) {
         
+		// LAMDA : 
+		// Arrays.sort(boxTypes, (a,b) -> b[1] - a[1]);
 		Arrays.sort(boxTypes, new Comparator<int[]>() {
 
 			@Override
