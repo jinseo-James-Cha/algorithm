@@ -27,8 +27,10 @@ public class Solution {
 		int[][] e3 = {{2,1},{4,4},{3,1},{4,1},{2,4},{3,4},{1,3},{4,3},{5,3},{5,3}};
 		int e33 = 13;
 		
+		System.out.println(s.maximumUnits(e1, e11));
 		System.out.println(s.maximumUnits(e2, e22));
-		
+		System.out.println(s.maximumUnits(e3, e33));
+
 	}
 	
 	
