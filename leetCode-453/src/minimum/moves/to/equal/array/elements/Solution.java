@@ -17,8 +17,6 @@ public class Solution {
          * -109 <= nums[i] <= 109
 		 * */
 		
-		
-		
 		Solution s = new Solution();
 		
 		
@@ -32,15 +30,12 @@ public class Solution {
 		System.out.println(s.minMoves(new int[] {1,2,3}));
 		
 		
-		
 		/*
 		 * Input: nums = [1,1,1]
          * Output: 0
 		 * */
 		System.out.println(s.minMoves(new int[] {1,1,1}));
 
-		
-		
 	}
 	
 	
