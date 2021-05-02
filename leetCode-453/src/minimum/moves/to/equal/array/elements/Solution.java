@@ -1,5 +1,10 @@
 package minimum.moves.to.equal.array.elements;
 
+import java.util.ArrayList;
+import java.util.List;
+
+/* https://leetcode.com/problems/minimum-moves-to-equal-array-elements */
+
 public class Solution {
 
 	public static void main(String[] args) {
@@ -40,6 +45,7 @@ public class Solution {
 	
 	
 	public int minMoves(int[] nums) {
+		
         int length = nums.length;
         if(length > 0) {
         // how to find minimum number 
