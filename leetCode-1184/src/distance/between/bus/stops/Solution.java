@@ -13,6 +13,7 @@ public class Solution {
          * Return the shortest distance between the given start and destination stops.
 		 */
 		
+		
 		/*
 		 * Example
 		 * Input: distance = [1,2,3,4], start = 0, destination = 1
@@ -23,6 +24,7 @@ public class Solution {
 		Solution s = new Solution();
 		System.out.println(s.distanceBetweenBusStops(new int[]{1, 2, 3, 4}, 0, 3));
 		
+		
 		/*
 		 * Input: distance = [1,2,3,4], start = 0, destination = 2
 		 * Output: 3
@@ -30,7 +32,6 @@ public class Solution {
 		 */
 		System.out.println(s.distanceBetweenBusStops(new int[]{1, 2, 3, 4}, 2, 3));
 
-		
 		
 		
 		/*
