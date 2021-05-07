@@ -33,7 +33,6 @@ public class Solution {
 
 	}
 	
-	
 	// Ver.5
 	// Runtime : 7 ms, 94.87%   
 	// Memory  : 38.9 MB, 95.97%
